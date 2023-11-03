@@ -1,0 +1,54 @@
+﻿@model List<Blog>
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_UserLayout1";
+}
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            @foreach (var item in Model)
+            { 
+                <div class="post-preview">
+                    <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id">
+                        <h2 class="post-title">@item.Title</h2>
+                        <textarea id="summernote" class="post-subtitle">@Html.Raw(item.Description)</textarea>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="">@item.PostedBy!.UserName</a>
+                        @item.PostedTime.ToString("dd/MM/yyyy")
+                    </p>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <!-- Pager-->
+                <div class="d-flex justify-content-end mb-4">
+                    <a class="btn btn-primary text-uppercase" href="#!">Details →</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<script>
+      $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    </script>
