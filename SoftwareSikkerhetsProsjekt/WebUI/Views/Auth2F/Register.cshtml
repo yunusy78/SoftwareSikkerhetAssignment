@@ -1,0 +1,17 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_USerLayout1";
+}
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+<p>Scan the QR code with your authenticator app:</p>
+<img src="data:image/png;base64, @ViewBag.QrCode" alt="QR Code">
+<p>Secret Key: @ViewBag.Secret</p>
+<p>Use this key to manually configure your authenticator app if needed.</p>
+

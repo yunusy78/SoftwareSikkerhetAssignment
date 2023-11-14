@@ -1,0 +1,22 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_UserLayout1";
+}
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+<form method="post">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required>
+    <br />
+    <label for="totpCode">TOTP Code:</label>
+    <input type="text" id="totpCode" name="totpCode" required>
+    <br />
+    <button type="submit">Login</button>
+</form>
+
